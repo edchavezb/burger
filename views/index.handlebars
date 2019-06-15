@@ -1,0 +1,71 @@
+<div class="container">
+
+  <div style="background-color: rgb(207, 81, 58); opacity:0.8; color:#ffffff; font-weight: bold !important;" class="jumbotron py-3">
+    <h1 class="display-4">Lentti: The burger marketplace</h1>
+    <hr class="my-4">
+    <div class="options mb-3">
+      <div class="description "> Shop for burgers in just a click!</div>
+    </div>
+  </div>
+
+  <div class="row mt-3 mb-4">
+    
+    <div class="col-md-6 text-center">
+
+      <h2>Check out our menu</h2>
+
+      {{#each burgers}}
+      {{#unless devoured}}
+      <div class="mt-2">
+        <i style="color:rgb(255, 230, 8)" class="fas fa-hamburger"></i>
+        {{bgr_name}}
+        <button class="change-status btn btn-primary" data-id="{{id}}" data-newstatus="1">
+          Add to your cart
+        </button>
+
+      </div>
+      {{/unless}}
+      {{/each}}
+    </div>
+
+    <div class="col-md-6 text-center">
+      <h2>Your devouring cart</h2>
+
+      {{#each burgers}}
+      {{#if devoured}}
+      <div class="mt-2">
+        <i style="color:rgb(255, 230, 8)" class="fas fa-hamburger"></i>
+        {{bgr_name}}
+        <button class="change-status btn btn-primary" data-id="{{id}}" data-newstatus="0">
+          Remove from cart
+        </button>
+
+      </div>
+      {{/if}}
+      {{/each}}
+
+    </div>
+  </div>
+  <hr>
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <h3>Add a burger</h3>
+      <form class="create-form">
+
+        <div class="form-group">
+          <label for="burger">Burger name:</label>
+          <input type="text" id="burger" name="name">
+        </div>
+
+        <div class="form-group">
+          <label for="devoured">Where?</label><br>
+          <input type="radio" name="devoured" value="1" checked> To my cart<br>
+          <input type="radio" name="devoured" value="0"> To the menu
+        </div>
+
+        <button class="btn btn-primary" type="submit">Add Burger</button>
+      </form>
+    </div>
+  </div>
+
+</div>
